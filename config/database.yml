@@ -78,10 +78,9 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  # primary: &primary_production
-  <<: *default
-  url:
-    <%= ENV['DATABASE_URL'] %>
+  primary: &primary_production
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
     # database: mysite_ug54
     # host: dpg-ctvea7dsvqrc7391mql0-a
     # username: mysite
@@ -94,7 +93,7 @@ production:
   #   <<: *primary_production
   #   database: store_production_queue
   #   migrations_paths: db/queue_migrate
-  # cable:
-  #   <<: *primary_production
-  #   database: store_production_cable
-  #   migrations_paths: db/cable_migrate
+  cable:
+    <<: *primary_production
+    database: store_production_cable
+    migrations_paths: db/cable_migrate
