@@ -85,14 +85,14 @@ production:
     # host: dpg-ctvea7dsvqrc7391mql0-a
     # username: mysite
     # password: <%= ENV["6TvygIJXnAho46CYsiPOB2yTun6EGkKC"] %>
-  # cache:
-  #   <<: *primary_production
-  #   database: store_production_cache
-  #   migrations_paths: db/cache_migrate
-  # queue:
-  #   <<: *primary_production
-  #   database: store_production_queue
-  #   migrations_paths: db/queue_migrate
+  cache:
+    <<: *primary_production
+    database: store_production_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_production
+    database: store_production_queue
+    migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
     database: store_production_cable
