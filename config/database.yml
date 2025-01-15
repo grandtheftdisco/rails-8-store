@@ -19,7 +19,6 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-
 development:
   <<: *default
   database: store_development
@@ -79,20 +78,23 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary: &primary_production
-    <<: *default
-    database: store_production
-    username: store
-    password: <%= ENV["STORE_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: store_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: store_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: store_production_cable
-    migrations_paths: db/cable_migrate
+  # primary: &primary_production
+  <<: *default
+  url:
+    <%= ENV['DATABASE_URL'] %>
+    # database: mysite_ug54
+    # host: dpg-ctvea7dsvqrc7391mql0-a
+    # username: mysite
+    # password: <%= ENV["6TvygIJXnAho46CYsiPOB2yTun6EGkKC"] %>
+  # cache:
+  #   <<: *primary_production
+  #   database: store_production_cache
+  #   migrations_paths: db/cache_migrate
+  # queue:
+  #   <<: *primary_production
+  #   database: store_production_queue
+  #   migrations_paths: db/queue_migrate
+  # cable:
+  #   <<: *primary_production
+  #   database: store_production_cable
+  #   migrations_paths: db/cable_migrate
