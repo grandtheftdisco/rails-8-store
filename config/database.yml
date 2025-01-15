@@ -81,10 +81,6 @@ production:
   primary: &primary_production
     <<: *default
     url: <%= ENV['DATABASE_URL'] %>
-    # database: mysite_ug54
-    # host: dpg-ctvea7dsvqrc7391mql0-a
-    # username: mysite
-    # password: <%= ENV["6TvygIJXnAho46CYsiPOB2yTun6EGkKC"] %>
   cache:
     <<: *primary_production
     database: store_production_cache
